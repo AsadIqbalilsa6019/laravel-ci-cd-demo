@@ -69,7 +69,8 @@ jobs:
             ls
             cd laravel-ci-cd-demo
             ls
-            
+            git pull origin "master"
+            echo "done"
 
     env:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
