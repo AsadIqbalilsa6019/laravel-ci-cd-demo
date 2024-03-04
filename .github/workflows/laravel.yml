@@ -71,6 +71,11 @@ jobs:
             ls
             git pull origin "master"
             echo "done"
+            cd ../
+            cp -r /home/ubuntu/laravel-ci-cd-demo /var/www/html
+            composer install --no-dev
+            sudo nginx -t
+            sudo systemctl restart nginx
 
     env:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
