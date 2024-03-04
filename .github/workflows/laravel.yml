@@ -56,21 +56,20 @@ jobs:
         run: echo "Hello world"
 
       # - name: Install Composer dependencies
-      #   run: composer install --no-dev --optimize-autoloader
+        # run: composer install --no-dev --optimize-autoloader
 
-    #   - name: SSH into EC2 instance and deploy
-    #     uses: appleboy/ssh-action@master
-    #     with:
-    #       host: ${{ secrets.EC2_HOST }}
-    #       username: ${{ secrets.EC2_USERNAME }}
-    #       key: ${{ secrets.SSH_PRIVATE_KEY }}
-    #       port: ${{ secrets.EC2_SSH_PORT }}
-    #       script: |
-    #         cd /path/to/your/laravel/app
-    #         git pull origin main
-    #         php artisan migrate --force
-    #         php artisan cache:clear
-    #         sudo service nginx restart # or systemctl restart apache2 depending on your web server
+      - name: SSH into EC2 instance and deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: 54.82.103.117
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            ls
+            cd /laravel-ci-cd-demo
+            ls
+            
 
-    # env:
-    #   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    env:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
