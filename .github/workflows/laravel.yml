@@ -72,8 +72,10 @@ jobs:
             git pull origin "master"
             echo "done"
             cd ../
-            cp -r /home/ubuntu/laravel-ci-cd-demo /var/www/html
+            sudo cp -r /home/ubuntu/laravel-ci-cd-demo /var/www/html
+            cd /var/www/html/laravel-ci-cd-demo
             composer install --no-dev
+            php artisan key:generate
             sudo nginx -t
             sudo systemctl restart nginx
 
